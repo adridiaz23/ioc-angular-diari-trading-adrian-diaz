@@ -1,0 +1,36 @@
+.contenidor {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.blocs {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.targeta {
+  flex: 2;
+  padding: 1rem;
+  border: 1px solid #1976d2;
+  border-radius: 8px;
+  background: #f5f9ff;
+}
+
+.nota {
+  flex: 1;
+  padding: 1rem;
+  border-left: 4px solid #f9a825;
+  background: #fffbe6;
+}
+
+.estat {
+  font-weight: bold;
+  color: #2e7d32;
+}

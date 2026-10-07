@@ -1,59 +1,31 @@
-# IocAngularDiariTradingAdrianDiaz
+# Diari de Trading
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.1.
+## Autor/a
+Adrian Díaz Cortés
 
-## Development server
+## Descripció
+Aplicació web per registrar i consultar operacions de trading. En aquest EAC es prepara el projecte base d'Angular i la pàgina inicial.
 
-To start a local development server, run:
+## Versions utilitzades
+- Node.js 24.19.0
+- npm 11.17.0
+- Angular CLI 22.2.1
+- Git 2.53.0
 
-```bash
-ng serve
-```
+## Com crear i executar el projecte
+Creació del projecte:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+    ng new ioc-angular-diari-trading-adrian-diaz --routing --style=scss --ssr=false --standalone --file-name-style-guide=2016 --skip-git --package-manager=npm
 
-## Code scaffolding
+Instal·lació de dependències i execució:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+    npm install
+    ng serve
 
-```bash
-ng generate component component-name
-```
+L'aplicació es pot veure a http://localhost:4200
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Estat de l'EAC1
+Projecte base creat, estructura de carpetes i branques preparades, pàgina inicial personalitzada i hot reload comprovat.
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Enllaç del repositori
+https://github.com/adridiaz23/ioc-angular-diari-trading-adrian-diaz
