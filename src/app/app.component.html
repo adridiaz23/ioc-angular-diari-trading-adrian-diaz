@@ -1,27 +1,8 @@
-<main class="contenidor">
-  <h1>{{ nomApp }}</h1>
-  <p class="autor">
-    Adrian Díaz Cortés · Aplicació web per registrar i consultar les meves operacions de trading.
-  </p>
+<h1>Diari de trading US30</h1>
 
-  <section class="blocs">
-    <article class="targeta">
-      <h2>Dades del projecte</h2>
-      <ul>
-        <li>Mòdul: DA2 Programació Avançada</li>
-        <li>Framework: Angular 22</li>
-        <li>Estils: SCSS</li>
-        <li>Activitat: EAC1</li>
-      </ul>
-    </article>
+<app-trade-filters (filtersChange)="onFiltersChange($event)" />
 
-    <aside class="nota">
-      <p>Hot reload comprovat</p>
-      <p>Nota: aquesta és la base del projecte; les funcions arribaran a les properes unitats.</p>
-    </aside>
-  </section>
-
-  <p class="estat">Projecte base llest</p>
-</main>
-
-<router-outlet />
+<app-trade-list
+  [trades]="visibleTrades"
+  [selectedId]="selectedTrade?.id ?? null"
+  (tradeSelected)="onTradeSelected($event)" />

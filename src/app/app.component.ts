@@ -1,13 +1,33 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { TRADES } from './data/trades.mock';
+import { Trade } from './models/trade.model';
+import { TradeFilters } from './models/trade-filters.model';
+import { TradeListComponent } from './components/trade-list/trade-list.component';
+import { TradeFiltersComponent } from './components/trade-filters/trade-filters.component';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.component.scss',
+  imports: [TradeListComponent, TradeFiltersComponent],
   templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class App {
-  protected readonly title = signal('ioc-angular-diari-trading-adrian-diaz');
-  nomApp = 'Diari de Trading';
+  trades: Trade[] = TRADES;
+  visibleTrades: Trade[] = TRADES;
+  selectedTrade: Trade | null = null;
+
+  onFiltersChange(f: TradeFilters): void {
+    const text = f.text.trim().toLowerCase();
+    this.visibleTrades = this.trades.filter(
+      (t) =>
+        (!text ||
+          t.title.toLowerCase().includes(text) ||
+          t.description.toLowerCase().includes(text)) &&
+        (!f.category || t.category === f.category),
+    );
+  }
+
+  onTradeSelected(t: Trade): void {
+    this.selectedTrade = t;
+  }
 }

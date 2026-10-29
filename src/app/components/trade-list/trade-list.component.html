@@ -1,0 +1,10 @@
+<ul class="list">
+  @for (trade of trades; track trade.id) {
+    <li>
+      <app-trade-card
+        [trade]="trade"
+        [selected]="trade.id === selectedId"
+        (tradeSelected)="tradeSelected.emit($event)" />
+    </li>
+  }
+</ul>

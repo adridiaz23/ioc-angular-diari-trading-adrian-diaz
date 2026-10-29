@@ -1,0 +1,13 @@
+<form (ngSubmit)="apply()">
+  <label for="search">Cerca</label>
+  <input id="search" name="text" type="text" [(ngModel)]="filters.text" />
+
+  <label for="category">Categoria</label>
+  <select id="category" name="category" [(ngModel)]="filters.category">
+    <option value="">Totes</option>
+    <option value="Buy">Buy</option>
+    <option value="Sell">Sell</option>
+  </select>
+
+  <button type="submit">Aplicar</button>
+</form>
