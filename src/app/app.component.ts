@@ -23,7 +23,7 @@ export class App {
         (!text ||
           t.title.toLowerCase().includes(text) ||
           t.description.toLowerCase().includes(text)) &&
-        (!f.category || t.category === f.category),
+        (f.category === 'all' || t.category === f.category),
     );
   }
 

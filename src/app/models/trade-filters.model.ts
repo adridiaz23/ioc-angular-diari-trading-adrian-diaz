@@ -2,5 +2,5 @@ import { TradeDirection } from './trade.model';
 
 export interface TradeFilters {
   text: string;
-  category: '' | TradeDirection; // '' = todas
+  category: 'all' | TradeDirection; // 'all' = totes les categories
 }

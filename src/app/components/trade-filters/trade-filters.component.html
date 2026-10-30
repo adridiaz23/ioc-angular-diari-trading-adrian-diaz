@@ -1,13 +1,31 @@
-<form (ngSubmit)="apply()">
-  <label for="search">Cerca</label>
-  <input id="search" name="text" type="text" [(ngModel)]="filters.text" />
+<form #filterForm="ngForm" (ngSubmit)="apply()">
+  <div class="field">
+    <label for="search">Cerca</label>
+    <input
+      id="search"
+      name="text"
+      type="text"
+      minlength="3"
+      [(ngModel)]="filters.text"
+      #text="ngModel" />
+    @if (text.invalid && (text.dirty || text.touched)) {
+      <p class="error" role="alert">El text de cerca ha de tenir almenys 3 caràcters.</p>
+    }
+  </div>
 
-  <label for="category">Categoria</label>
-  <select id="category" name="category" [(ngModel)]="filters.category">
-    <option value="">Totes</option>
-    <option value="Buy">Buy</option>
-    <option value="Sell">Sell</option>
-  </select>
+  <div class="field">
+    <label for="category">Categoria</label>
+    <select
+      id="category"
+      name="category"
+      required
+      [(ngModel)]="filters.category">
+      <option value="all">Totes</option>
+      <option value="Buy">Buy</option>
+      <option value="Sell">Sell</option>
+    </select>
+  </div>
 
-  <button type="submit">Aplicar</button>
+  <button type="submit" [disabled]="filterForm.invalid">Aplicar</button>
+  <button type="button" (click)="reset(filterForm)">Restablir</button>
 </form>

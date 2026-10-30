@@ -1,6 +1,23 @@
 form {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.error {
+  margin: 0;
+  color: #a12a2a;
+  font-size: 0.85rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
