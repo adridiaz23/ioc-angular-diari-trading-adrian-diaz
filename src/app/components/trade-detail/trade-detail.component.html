@@ -1,0 +1,25 @@
+<section class="detail" aria-labelledby="detail-title">
+  <h2 id="detail-title">Detall de l'operació</h2>
+
+  @if (trade) {
+    <h3>
+      {{ trade.title }}
+      <app-trade-badge [category]="trade.category" />
+    </h3>
+    <p>{{ trade.description }}</p>
+    <dl>
+      <dt>Data</dt>
+      <dd>{{ trade.date | date: 'dd/MM/yyyy' }}</dd>
+      <dt>Sessió</dt>
+      <dd>{{ trade.session }}</dd>
+      <dt>Resultat</dt>
+      <dd>{{ trade.resultPct }}%</dd>
+      <dt>RR màxim assolit</dt>
+      <dd>{{ trade.maxRR }}</dd>
+      <dt>Destacada</dt>
+      <dd>{{ trade.featured ? 'Sí' : 'No' }}</dd>
+    </dl>
+  } @else {
+    <p>Selecciona una operació per veure'n el detall.</p>
+  }
+</section>

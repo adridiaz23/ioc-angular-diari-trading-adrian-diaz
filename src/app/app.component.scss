@@ -1,36 +1,23 @@
-.contenidor {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: Arial, sans-serif;
+.counter {
+  font-weight: 600;
 }
 
-.blocs {
-  display: flex;
-  gap: 1.5rem;
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: start;
 }
 
-.targeta {
-  flex: 2;
+.empty {
   padding: 1rem;
-  border: 1px solid #1976d2;
+  border: 1px dashed #999;
   border-radius: 8px;
-  background: #f5f9ff;
+  color: #555;
 }
 
-.nota {
-  flex: 1;
-  padding: 1rem;
-  border-left: 4px solid #f9a825;
-  background: #fffbe6;
-}
-
-.estat {
-  font-weight: bold;
-  color: #2e7d32;
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }

@@ -4,6 +4,8 @@
     <app-trade-badge [category]="trade.category" />
   </header>
   <p>{{ trade.description }}</p>
-  <p class="meta">{{ trade.date }} · {{ trade.resultPct }}% · RR {{ trade.maxRR }}</p>
+  <p class="meta">
+    {{ trade.date | date: 'dd/MM/yyyy' }} · {{ trade.resultPct }}% · RR {{ trade.maxRR }}
+  </p>
   <button type="button" (click)="onSelect()" [attr.aria-pressed]="selected">Veure detall</button>
 </article>

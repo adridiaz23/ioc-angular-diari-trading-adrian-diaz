@@ -1,0 +1,18 @@
+.detail {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  background: #fafafa;
+}
+
+h2 { margin-top: 0; font-size: 1.1rem; }
+h3 { font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+dt { font-weight: 600; }
+dd { margin: 0; }

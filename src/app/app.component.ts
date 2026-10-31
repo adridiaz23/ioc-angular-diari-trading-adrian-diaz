@@ -4,10 +4,11 @@ import { Trade } from './models/trade.model';
 import { TradeFilters } from './models/trade-filters.model';
 import { TradeListComponent } from './components/trade-list/trade-list.component';
 import { TradeFiltersComponent } from './components/trade-filters/trade-filters.component';
+import { TradeDetailComponent } from './components/trade-detail/trade-detail.component';
 
 @Component({
   selector: 'app-root',
-  imports: [TradeListComponent, TradeFiltersComponent],
+  imports: [TradeListComponent, TradeFiltersComponent, TradeDetailComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

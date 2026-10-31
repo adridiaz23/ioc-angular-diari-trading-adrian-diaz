@@ -2,7 +2,21 @@
 
 <app-trade-filters (filtersChange)="onFiltersChange($event)" />
 
-<app-trade-list
-  [trades]="visibleTrades"
-  [selectedId]="selectedTrade?.id ?? null"
-  (tradeSelected)="onTradeSelected($event)" />
+<p class="counter" role="status">
+  Resultats: {{ visibleTrades.length }} de {{ trades.length }}
+</p>
+
+<div class="layout">
+  <div>
+    @if (visibleTrades.length > 0) {
+      <app-trade-list
+        [trades]="visibleTrades"
+        [selectedId]="selectedTrade?.id ?? null"
+        (tradeSelected)="onTradeSelected($event)" />
+    } @else {
+      <p class="empty">No s'ha trobat cap operació amb aquests filtres.</p>
+    }
+  </div>
+
+  <app-trade-detail [trade]="selectedTrade" />
+</div>
