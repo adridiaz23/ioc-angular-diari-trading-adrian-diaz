@@ -1,21 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TradeBadge } from './trade-badge.component';
+import { TradeBadgeComponent } from './trade-badge.component';
 
-describe('TradeBadge', () => {
-  let component: TradeBadge;
-  let fixture: ComponentFixture<TradeBadge>;
+describe('TradeBadgeComponent', () => {
+  let component: TradeBadgeComponent;
+  let fixture: ComponentFixture<TradeBadgeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TradeBadge],
+      imports: [TradeBadgeComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TradeBadge);
+    fixture = TestBed.createComponent(TradeBadgeComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.componentRef.setInput('category', 'Buy');
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show the category', () => {
+    expect(fixture.nativeElement.textContent).toContain('Buy');
   });
 });

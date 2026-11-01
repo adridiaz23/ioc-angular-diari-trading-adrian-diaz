@@ -1,24 +1,26 @@
-import { TestBed } from '@angular/core/testing';
-import { App } from './app.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TradeBadgeComponent } from './trade-badge.component';
 
-describe('App', () => {
+describe('TradeBadgeComponent', () => {
+  let component: TradeBadgeComponent;
+  let fixture: ComponentFixture<TradeBadgeComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
-    })
-      .compileComponents();
+      imports: [TradeBadgeComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(TradeBadgeComponent);
+    component = fixture.componentInstance;
+    fixture.componentRef.setInput('category', 'Buy');
+    fixture.detectChanges();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ioc-angular-diari-trading-adrian-diaz');
+  it('should show the category', () => {
+    expect(fixture.nativeElement.textContent).toContain('Buy');
   });
 });

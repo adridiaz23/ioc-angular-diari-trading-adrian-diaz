@@ -1,21 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TradeCard } from './trade-card.component';
+import { TradeCardComponent } from './trade-card.component';
+import { TRADES } from '../../data/trades.mock';
 
-describe('TradeCard', () => {
-  let component: TradeCard;
-  let fixture: ComponentFixture<TradeCard>;
+describe('TradeCardComponent', () => {
+  let component: TradeCardComponent;
+  let fixture: ComponentFixture<TradeCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TradeCard],
+      imports: [TradeCardComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TradeCard);
+    fixture = TestBed.createComponent(TradeCardComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.componentRef.setInput('trade', TRADES[0]);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show the trade title', () => {
+    expect(fixture.nativeElement.textContent).toContain(TRADES[0].title);
   });
 });

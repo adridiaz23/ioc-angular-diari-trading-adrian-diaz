@@ -1,22 +1,30 @@
-<h1>Diari de trading US30</h1>
+<a class="skip-link" href="#main-content">Salta al contingut principal</a>
 
-<app-trade-filters (filtersChange)="onFiltersChange($event)" />
+<header>
+  <h1>Diari de trading US30</h1>
+</header>
 
-<p class="counter" role="status">
-  Resultats: {{ visibleTrades.length }} de {{ trades.length }}
-</p>
+<main id="main-content" tabindex="-1">
+  <app-trade-filters (filtersChange)="onFiltersChange($event)" />
 
-<div class="layout">
-  <div>
-    @if (visibleTrades.length > 0) {
-      <app-trade-list
-        [trades]="visibleTrades"
-        [selectedId]="selectedTrade?.id ?? null"
-        (tradeSelected)="onTradeSelected($event)" />
-    } @else {
-      <p class="empty">No s'ha trobat cap operació amb aquests filtres.</p>
-    }
+  <p class="counter" role="status">
+    Resultats: {{ visibleTrades.length }} de {{ trades.length }}
+  </p>
+
+  <div class="layout">
+    <section aria-label="Llistat d'operacions">
+      @if (visibleTrades.length > 0) {
+        <app-trade-list
+          [trades]="visibleTrades"
+          [selectedId]="selectedTrade?.id ?? null"
+          (tradeSelected)="onTradeSelected($event)" />
+      } @else {
+        <p class="empty" role="status">
+          No s'ha trobat cap operació amb aquests filtres.
+        </p>
+      }
+    </section>
+
+    <app-trade-detail [trade]="selectedTrade" />
   </div>
-
-  <app-trade-detail [trade]="selectedTrade" />
-</div>
+</main>

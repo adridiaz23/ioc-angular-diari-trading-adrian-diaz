@@ -1,10 +1,6 @@
-# Diari de Trading
+# Diari de trading US30
 
-## Autor/a
-Adrian Díaz Cortés
-
-## Descripció
-Aplicació web per registrar i consultar operacions de trading. En aquest EAC es prepara el projecte base d'Angular i la pàgina inicial.
+Aplicació Angular de l'EAC2 (DA2_OA01, Unitat 2). Mostra un diari d'operacions de trading sobre US30 amb llistat, filtres, selecció i panell de detall.
 
 ## Versions utilitzades
 - Node.js 24.19.0
@@ -12,20 +8,28 @@ Aplicació web per registrar i consultar operacions de trading. En aquest EAC es
 - Angular CLI 22.2.1
 - Git 2.53.0
 
-## Com crear i executar el projecte
-Creació del projecte:
+## Comandes
+```bash
+npm install
+ng serve      # http://localhost:4200
+ng test
+ng build
+```
 
-    ng new ioc-angular-diari-trading-adrian-diaz --routing --style=scss --ssr=false --standalone --file-name-style-guide=2016 --skip-git --package-manager=npm
+## Branca
+Treball a la branca `ra2-components`.
 
-Instal·lació de dependències i execució:
+## Components creats
+- `App`: component principal; guarda les dades, la selecció i aplica el filtratge.
+- `TradeFiltersComponent`: formulari de filtres amb `ngModel`, `required`, `minlength` i restabliment.
+- `TradeListComponent`: recorre el llistat amb `@for` i `track`.
+- `TradeCardComponent`: resum d'una operació amb pipe `date`.
+- `TradeBadgeComponent`: etiqueta Buy/Sell amb color.
+- `TradeDetailComponent`: panell de detall de l'operació seleccionada.
 
-    npm install
-    ng serve
+## Model i dades
+- Model: `src/app/models/trade.model.ts`
+- Dades mock (11 operacions): `src/app/data/trades.mock.ts`
 
-L'aplicació es pot veure a http://localhost:4200
-
-## Estat de l'EAC1
-Projecte base creat, estructura de carpetes i branques preparades, pàgina inicial personalitzada i hot reload comprovat.
-
-## Enllaç del repositori
-https://github.com/adridiaz23/ioc-angular-diari-trading-adrian-diaz
+## Accessibilitat i responsive
+Enllaç de salt al contingut, focus visible, etiquetes associades als camps, `role="status"` al comptador i `role="alert"` a l'error. El disseny passa a una columna per sota de 800 px.

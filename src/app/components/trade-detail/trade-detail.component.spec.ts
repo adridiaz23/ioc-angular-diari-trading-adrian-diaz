@@ -1,21 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TradeDetail } from './trade-detail.component';
+import { TradeDetailComponent } from './trade-detail.component';
+import { TRADES } from '../../data/trades.mock';
 
-describe('TradeDetail', () => {
-  let component: TradeDetail;
-  let fixture: ComponentFixture<TradeDetail>;
+describe('TradeDetailComponent', () => {
+  let component: TradeDetailComponent;
+  let fixture: ComponentFixture<TradeDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TradeDetail],
+      imports: [TradeDetailComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TradeDetail);
+    fixture = TestBed.createComponent(TradeDetailComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should ask to select a trade when there is none', () => {
+    expect(fixture.nativeElement.textContent).toContain('Selecciona una operació');
+  });
+
+  it('should show the selected trade', () => {
+    fixture.componentRef.setInput('trade', TRADES[0]);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain(TRADES[0].title);
   });
 });

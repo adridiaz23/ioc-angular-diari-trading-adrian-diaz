@@ -1,3 +1,22 @@
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem;
+  padding: 0.5rem 1rem;
+  background: #1b4fbf;
+  color: #fff;
+  border-radius: 4px;
+  z-index: 10;
+
+  &:focus {
+    top: 0.5rem;
+  }
+}
+
+main {
+  padding: 0 0.5rem;
+}
+
 .counter {
   font-weight: 600;
 }

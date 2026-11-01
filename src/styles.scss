@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+:focus-visible {
+  outline: 3px solid #1b4fbf;
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  padding: 0 0.5rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.35rem 0.6rem;
+}
+
+img,
+svg {
+  max-width: 100%;
+}

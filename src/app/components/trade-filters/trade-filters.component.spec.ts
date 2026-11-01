@@ -1,21 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TradeFilters } from './trade-filters.component';
+import { TradeFiltersComponent } from './trade-filters.component';
 
-describe('TradeFilters', () => {
-  let component: TradeFilters;
-  let fixture: ComponentFixture<TradeFilters>;
+describe('TradeFiltersComponent', () => {
+  let component: TradeFiltersComponent;
+  let fixture: ComponentFixture<TradeFiltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TradeFilters],
+      imports: [TradeFiltersComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TradeFilters);
+    fixture = TestBed.createComponent(TradeFiltersComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit the filters when applied', () => {
+    let emitted: unknown;
+    component.filtersChange.subscribe((f) => (emitted = f));
+    component.filters = { text: 'sell', category: 'Sell' };
+    component.apply();
+    expect(emitted).toEqual({ text: 'sell', category: 'Sell' });
   });
 });
