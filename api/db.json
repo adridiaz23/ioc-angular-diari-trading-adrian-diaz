@@ -1,0 +1,15 @@
+{
+  "trades": [
+    { "id": 1, "title": " US30 Buy #1 ", "description": "Compra en la sesión de Londres. Solo llegó a RR 0.5 y se cerró en pérdida.", "category": "buy", "date": "2026-10-02", "result_pct": "-1", "max_rr": "0.5", "session": "London" },
+    { "id": 2, "title": "US30 Buy #2", "description": "Compra en Londres con recorrido limpio. Alcanzó RR 3.", "category": "Buy", "date": "06/10/2026", "result_pct": 1, "max_rr": 3, "session": " london ", "featured": true },
+    { "id": 3, "title": "US30 Sell #3", "description": "Venta en Londres. Alcanzó RR 1 y se cerró en beneficio.", "category": "SELL", "date": "2026-10-07T00:00:00", "result_pct": "1", "max_rr": "1", "session": "London" },
+    { "id": 4, "title": "US30 Sell #4", "description": "Venta en Londres con movimiento fuerte a favor. Alcanzó RR 3.", "category": "Sell", "date": "2026-10-08", "result_pct": 1, "max_rr": "3", "session": "London", "featured": true },
+    { "id": 5, "title": "US30 Buy #5", "description": "Compra en Londres tras la apertura. Alcanzó RR 3.", "category": " Buy", "date": "13/10/2026", "result_pct": "1", "max_rr": 3, "session": "LONDON", "featured": true },
+    { "id": 6, "title": "US30 Buy #6", "description": "   ", "category": "Buy", "date": "2026-10-15", "result_pct": 1, "max_rr": 1, "session": "London" },
+    { "id": 7, "title": "US30 Buy #7 ", "description": "Compra en Londres siguiendo la tendencia del día. Alcanzó RR 1.", "category": "buy", "date": "2026-10-16T00:00:00", "result_pct": "1", "max_rr": "1", "session": "London" },
+    { "id": 8, "title": "US30 Buy #8", "description": "Compra en Londres. Operación ordenada que alcanzó RR 1.", "category": "Buy", "date": "2026-10-20", "result_pct": 1, "max_rr": "1", "session": "London" },
+    { "id": 9, "title": "US30 Sell #9", "description": "Venta en Londres. Alcanzó RR 1 y se cerró en beneficio.", "category": "sell", "date": "21/10/2026", "result_pct": "1", "max_rr": 1, "session": "london" },
+    { "id": 10, "title": "US30 Sell #10", "description": "Venta en Londres con ruptura clara. Alcanzó RR 1.", "category": "Sell", "date": "2026-10-22", "result_pct": 1, "max_rr": "1", "session": "London" },
+    { "id": 11, "title": "US30 Sell #11", "description": "Venta en Londres. Alcanzó RR 1 y cerró el mes en positivo.", "category": "SELL ", "date": "2026-10-23", "result_pct": "1", "max_rr": "1", "session": "London" }
+  ]
+}
