@@ -7,24 +7,35 @@
 <main id="main-content" tabindex="-1">
   <app-trade-filters (filtersChange)="onFiltersChange($event)" />
 
-  <p class="counter" role="status">
-    Resultats: {{ visibleTrades.length }} de {{ trades.length }}
-  </p>
+  @if (tradeService.loading()) {
+    <p class="loading" role="status">Carregant operacions…</p>
+  }
 
-  <div class="layout">
-    <section aria-label="Llistat d'operacions">
-      @if (visibleTrades.length > 0) {
-        <app-trade-list
-          [trades]="visibleTrades"
-          [selectedId]="selectedTrade?.id ?? null"
-          (tradeSelected)="onTradeSelected($event)" />
-      } @else {
-        <p class="empty" role="status">
-          No s'ha trobat cap operació amb aquests filtres.
-        </p>
-      }
-    </section>
+  @if (tradeService.error(); as message) {
+    <div class="error-banner" role="alert">
+      <p>{{ message }}</p>
+      <button type="button" (click)="tradeService.retry()">Reintentar</button>
+    </div>
+  } @else {
+    <p class="counter" role="status">
+      Resultats: {{ visibleTrades().length }} de {{ trades().length }}
+    </p>
 
-    <app-trade-detail [trade]="selectedTrade" />
-  </div>
+    <div class="layout">
+      <section aria-label="Llistat d'operacions">
+        @if (visibleTrades().length > 0) {
+          <app-trade-list
+            [trades]="visibleTrades()"
+            [selectedId]="selectedTrade?.id ?? null"
+            (tradeSelected)="onTradeSelected($event)" />
+        } @else {
+          <p class="empty" role="status">No s'ha trobat cap operació amb aquests filtres.</p>
+        }
+      </section>
+
+      <app-trade-detail [trade]="selectedTrade" />
+    </div>
+  }
+
+  <button type="button" (click)="addSampleTrade()">Afegir operació de prova</button>
 </main>

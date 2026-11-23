@@ -51,3 +51,16 @@ export function adaptTrade(api: TradeApi): Trade {
 export function adaptTrades(list: TradeApi[]): Trade[] {
   return list.map(adaptTrade);
 }
+
+export function toApiPayload(trade: Omit<Trade, 'id'>): Omit<TradeApi, 'id'> {
+  return {
+    title: trade.title,
+    description: trade.description,
+    category: trade.category,
+    date: trade.date,
+    result_pct: trade.resultPct,
+    max_rr: trade.maxRR,
+    session: trade.session,
+    featured: trade.featured,
+  };
+}

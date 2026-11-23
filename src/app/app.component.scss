@@ -40,3 +40,14 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+.error-banner {
+  border: 2px solid #8a1f11;
+  background: #fff2ef;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.loading {
+  font-style: italic;
+}
