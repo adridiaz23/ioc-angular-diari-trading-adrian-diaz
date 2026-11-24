@@ -1,31 +1,46 @@
-<form #filterForm="ngForm" (ngSubmit)="apply()">
+<form class="filters" [formGroup]="form" role="search" aria-label="Cerca d'operacions">
   <div class="field">
-    <label for="search">Cerca</label>
+    <label for="search-text">Cerca</label>
     <input
-      id="search"
-      name="text"
-      type="text"
-      minlength="3"
-      [(ngModel)]="filters.text"
-      #text="ngModel" />
-    @if (text.invalid && (text.dirty || text.touched)) {
-      <p class="error" role="alert">El text de cerca ha de tenir almenys 3 caràcters.</p>
-    }
+      id="search-text"
+      type="search"
+      formControlName="text"
+      autocomplete="off"
+      aria-describedby="search-text-feedback"
+      [attr.aria-invalid]="text.invalid && text.dirty" />
   </div>
 
   <div class="field">
-    <label for="category">Categoria</label>
-    <select
-      id="category"
-      name="category"
-      required
-      [(ngModel)]="filters.category">
+    <label for="search-category">Categoria</label>
+    <select id="search-category" formControlName="category">
       <option value="all">Totes</option>
       <option value="Buy">Buy</option>
       <option value="Sell">Sell</option>
     </select>
   </div>
 
-  <button type="submit" [disabled]="filterForm.invalid">Aplicar</button>
-  <button type="button" (click)="reset(filterForm)">Restablir</button>
+  <button type="button" (click)="clear()">Netejar cerca</button>
+
+  <div id="search-text-feedback">
+    @if (text.pending) {
+      <p class="hint" role="status">Comprovant resultats…</p>
+    } @else if (text.hasError('minlength') && text.dirty) {
+      <p class="field-error" role="alert">Escriu almenys {{ minLength }} caràcters.</p>
+    } @else if (text.hasError('noResults') && text.dirty) {
+      <p class="field-error" role="alert">No hi ha cap operació per a aquest terme.</p>
+    }
+  </div>
+
+  @if (history.items().length > 0) {
+    <section aria-label="Historial de cerques">
+      <h2>Historial de cerques</h2>
+      <ul>
+        @for (term of history.items(); track term) {
+          <li>
+            <button type="button" (click)="useHistory(term)">{{ term }}</button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
 </form>

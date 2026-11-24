@@ -18,14 +18,14 @@
     </div>
   } @else {
     <p class="counter" role="status">
-      Resultats: {{ visibleTrades().length }} de {{ trades().length }}
+      Resultats: {{ trades().length }}
     </p>
 
     <div class="layout">
       <section aria-label="Llistat d'operacions">
-        @if (visibleTrades().length > 0) {
+        @if (trades().length > 0) {
           <app-trade-list
-            [trades]="visibleTrades()"
+            [trades]="trades()"
             [selectedId]="selectedTrade?.id ?? null"
             (tradeSelected)="onTradeSelected($event)" />
         } @else {

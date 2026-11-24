@@ -94,4 +94,10 @@ export class TradeService {
         (text === '' || `${trade.title} ${trade.description}`.toLowerCase().includes(text)),
     );
   }
+  hasResults(text: string): Observable<boolean> {
+  return this.fetchTrades({ text, category: '' }).pipe(
+    map((trades) => trades.length > 0),
+    catchError(() => of(true)), // si la API cae, no bloqueamos el formulario
+  );
+}
 }

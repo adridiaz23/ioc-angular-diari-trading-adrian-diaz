@@ -17,19 +17,6 @@ export class App {
   protected readonly tradeService = inject(TradeService);
 
   protected readonly trades = this.tradeService.trades;
-  private readonly filters = signal<TradeFilters>({ text: '', category: 'all' });
-
-  protected readonly visibleTrades = computed(() => {
-    const f = this.filters();
-    const text = f.text.trim().toLowerCase();
-    return this.trades().filter(
-      (t) =>
-        (!text ||
-          t.title.toLowerCase().includes(text) ||
-          t.description.toLowerCase().includes(text)) &&
-        (f.category === 'all' || t.category === f.category),
-    );
-  });
 
   selectedTrade: Trade | null = null;
 
@@ -38,7 +25,10 @@ export class App {
   }
 
   onFiltersChange(f: TradeFilters): void {
-    this.filters.set(f);
+    this.tradeService.search({
+      text: f.text,
+      category: f.category === 'all' ? '' : f.category,
+    });
   }
 
   onTradeSelected(t: Trade): void {

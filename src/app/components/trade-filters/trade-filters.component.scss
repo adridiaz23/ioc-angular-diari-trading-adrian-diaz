@@ -21,3 +21,12 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+.field-error {
+  color: #8a1f11;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
