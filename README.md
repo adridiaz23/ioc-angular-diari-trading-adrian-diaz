@@ -33,3 +33,17 @@ Treball a la branca `ra2-components`.
 
 ## Accessibilitat i responsive
 Enllaç de salt al contingut, focus visible, etiquetes associades als camps, `role="status"` al comptador i `role="alert"` a l'error. El disseny passa a una columna per sota de 800 px.
+
+## EAC3: servicios externos y formularios avanzados (RA3)
+
+- **Rama:** `ra3-serveis`
+- **Versiones:** Node.js 24.x, npm 11.x, Angular 22.x, TypeScript 6.0.x, json-server 0.17.4
+- **Instalar dependencias:** `npm install`
+- **Arrancar la API:** `npm run api` (usa `api/db.json`, puerto 3001; URL base `http://localhost:3001`)
+- **Arrancar Angular:** `ng serve` (en otro terminal) y abrir `http://localhost:4200`
+- **Tests y build:** `npm test`, `npm run build`
+
+### Servicios, modelos y formularios
+- Servicios: `TradeService`, `SearchHistoryService` (ver `docs/serveis.md`)
+- Modelos y adaptador: `TradeApi`, `Trade`, `adaptTrade` (ver `docs/models.md`)
+- Formulario de búsqueda con validaciones e historial (ver `docs/formularis.md`)

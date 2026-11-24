@@ -1,26 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TradeBadgeComponent } from './trade-badge.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { describe, expect, it } from 'vitest';
 
-describe('TradeBadgeComponent', () => {
-  let component: TradeBadgeComponent;
-  let fixture: ComponentFixture<TradeBadgeComponent>;
+import { App } from './app.component';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TradeBadgeComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(TradeBadgeComponent);
-    component = fixture.componentInstance;
-    fixture.componentRef.setInput('category', 'Buy');
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should show the category', () => {
-    expect(fixture.nativeElement.textContent).toContain('Buy');
+describe('App', () => {
+  it('se crea el componente', () => {
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
+    const fixture = TestBed.createComponent(App);
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

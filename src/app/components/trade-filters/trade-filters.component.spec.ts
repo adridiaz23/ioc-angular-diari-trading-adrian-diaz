@@ -1,29 +1,44 @@
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
+
 import { TradeFiltersComponent } from './trade-filters.component';
 
 describe('TradeFiltersComponent', () => {
-  let component: TradeFiltersComponent;
   let fixture: ComponentFixture<TradeFiltersComponent>;
+  let input: HTMLInputElement;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TradeFiltersComponent],
-    }).compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
     fixture = TestBed.createComponent(TradeFiltersComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
+    input = fixture.nativeElement.querySelector('#search-text');
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('se crea con el campo de búsqueda y el selector de categoría', () => {
+    expect(input).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#search-category')).toBeTruthy();
   });
 
-  it('should emit the filters when applied', () => {
-    let emitted: unknown;
-    component.filtersChange.subscribe((f) => (emitted = f));
-    component.filters = { text: 'sell', category: 'Sell' };
-    component.apply();
-    expect(emitted).toEqual({ text: 'sell', category: 'Sell' });
+  it('muestra error de validación con menos de 3 caracteres', () => {
+    input.value = 'ab';
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('almenys 3');
+  });
+
+  it('el botón Netejar cerca vacía el campo', () => {
+    input.value = 'ab';
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+    button.click();
+    fixture.detectChanges();
+
+    expect(input.value).toBe('');
   });
 });
